@@ -6,12 +6,12 @@ def convert_text_to_bookmark_html_and_text(input_filepath, output_html_filepath,
     未分類的放在綜合台下，並將綜合台放在新聞分類上方，同時生成對應格式的文字檔。
     """
     converter = opencc.OpenCC('s2t')  # 簡體轉繁體
-    news_keywords = ["新聞", "財經", "News", "CNN"]
-    sports_keywords = ["體育", "運動", "博斯", "Sports", "NBA", "AXN"]
-    movie_keywords = ["電影", "西片", "洋片", "HBO", "Movies", "龍詳", "CINEMAX"]
+    news_keywords = ["新聞", "財經", "News", "CNN", "Bloomberg"]
+    sports_keywords = ["體育", "運動", "博斯", "Sports", "NBA"]
+    movie_keywords = ["電影", "西片", "洋片", "HBO", "Movies", "龍詳", "CINEMAX", "AXN", "Cinema"]
     drama_keywords = ["戲劇", "偶像", "影劇"]
-    kids_keywords = ["Yoyo", "卡通"]
-    travel_keywords = ["旅遊", "美食", "Travel", "travel", "Discovery"]
+    kids_keywords = ["Yoyo", "卡通", "兒童", "親子", "動漫"]
+    travel_keywords = ["旅遊", "美食", "Travel", "travel", "Discovery", "紀實", "動物星球", "探索"]
     wire_keywords = ["華視", "中視", "台視", "臺視", "民視", "公視"]
 
     news_channels = []
