@@ -1,0 +1,28 @@
+
+import hanlp
+import re
+
+# 載入預訓練模型
+ner = hanlp.load('zh_ner_ontonotes_bert_base_chinese')
+
+text = """
+ABP-816性愛口交沙龍新小姐園田美櫻, https://jable.tv/videos/abp-816-c/
+JUY-723對面房間的人妻神宮寺奈緒, https://jable.tv/videos/juy-723-c/
+JUY-714有韻味的人妻我妻裡帆AV出道作, https://jable.tv/videos/
+"""
+
+lines = text.strip().split('\n')
+for line in lines:
+    parts = line.split(', ', 1)  # 以 ', ' 分割，保留第一個逗號後面的部分
+    if parts:
+        content = parts[0]
+        # 使用正則表達式提取開頭的編號 (大寫字母和數字)
+        match = re.match(r'^[A-Z0-9-]+', content)
+        prefix = match.group(0) if match else ""
+
+        result = ner(content)
+        person_names = [entity[0] for entity in result if entity[1] == 'PERSON']
+        first_person_name = person_names[0] if person_names else ""
+        print(f"{prefix}_{first_person_name}")
+    else:
+        print("")
